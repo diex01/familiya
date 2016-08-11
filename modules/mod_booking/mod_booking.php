@@ -203,6 +203,9 @@ $minEndMax = json_encode($prices);
         float: left;
         padding: 10px;
     }
+    .main-div-item.button-div-right {
+        padding: 15px;
+    }
     .div-img {
         width: 170px;
         overflow: hidden;
@@ -429,6 +432,13 @@ $minEndMax = json_encode($prices);
                         $buttonDiv.append($readMore).append($book);
 
                         var
+                            $buttonDivRight = $('<div/>', { 'class': 'main-div-item button-div-right'}),
+                        $bookCount = $('<a/>', { 'class': 'uk-button uk-button-primary' , 'data-uk-modal': "{target:'#count'}" }).html(
+                            '<i class="fa fa-calculator">'
+                                + '</i>' + ' Онлайн<br> калькулятор');
+                        $buttonDivRight.append($bookCount);
+
+                        var
                             $img = $('<img/>', { src: images.image_intro, 'class' : 'room-image' }),
                             $a = $('<a/>', { href: url, 'class' : 'text-block-title' }).html( 'Апартаменты № ' + rooms[i].room.nubmer),
                             $textInfo = $('<div/>', { 'class': 'text-info' }).html(
@@ -461,6 +471,7 @@ $minEndMax = json_encode($prices);
 
                         // buttons
                         $buttonDiv.appendTo($mainDiv);
+                        $buttonDivRight.appendTo($mainDiv);
 
                         // вставляем в главный див
                         $roomsList.append($mainDiv);
@@ -538,3 +549,4 @@ $minEndMax = json_encode($prices);
         });
     })(jQuery);
 </script>
+
