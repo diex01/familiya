@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <extension type="module" version="2.5" client="site" method="upgrade">
+            <name>mod_booking</name>
+            <author>bahek2462774</author>
+            <creationDate>18.02.2014</creationDate>
+            <copyright>(c) Ivan S.</copyright>
+            <license>GNU General Public License version 2 or later</license>
+            <authorEmail>2462774@mail.ru</authorEmail>
+            <authorUrl>http://sites.help-master.net</authorUrl>
+            <version>2.5.5</version>
+            <description></description>
+            <files>
+                <filename module="mod_booking">mod_booking.php</filename>
+                <filename>index.html</filename>
+                <filename>script_booking.js</filename>
+                <filename>style_booking.css</filename>
+                <filename>mod_booking.xml</filename>
+            </files>
+            <config>
+                <fields name="param">
+                    <fieldset name="basic">
+
+                    </fieldset>
+                    <fieldset name="advanced ">
+                        <field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="MMM"/>
+                    </fieldset>
+                </fields>
+            </config>
+        </extension>
