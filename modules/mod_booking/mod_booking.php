@@ -261,14 +261,15 @@ $minEndMax = json_encode($prices);
                 $bedroomsCount = $('#bedrooms_count'),
                 $level= $('#level'),
                 $reset = $('#reset'),
-                $roomsForm = $('#rooms-form');
+                $roomsForm = $('#rooms-form'),
+                $countDate1 = $('#countDate1'),
+                $countDate2 = $('#countDate2');
 
 
             $('.datepicker').datepicker({
                 minDate: new Date(),
                 dateFormat: 'yy.mm.dd'
             });
-
 
 
             function filterByClients(rooms) {
@@ -433,10 +434,30 @@ $minEndMax = json_encode($prices);
 
                         var
                             $buttonDivRight = $('<div/>', { 'class': 'main-div-item button-div-right'}),
-                        $bookCount = $('<a/>', { 'class': 'uk-button uk-button-primary' , 'data-uk-modal': "{target:'#count'}" }).html(
+                            $bookCount = $('<a/>', { 'class': 'uk-button uk-button-primary' , 'data-uk-modal': "{target:'#count'}" }).html(
                             '<i class="fa fa-calculator">'
-                                + '</i>' + ' Онлайн<br> калькулятор');
-                        $buttonDivRight.append($bookCount);
+                                + '</i>' + ' Онлайн<br> калькулятор'),
+                            $ukModal = $('<div/>', { 'class': 'uk-modal' , 'id': 'count' }),
+                            $ukModalDialog = $('<div/>', { 'class': 'uk-modal-dialog'}),
+                            $ukModalHeader = $('<div/>', { 'class': 'uk-modal-header' }).html(
+                                '<table class="text-block-table""><tr>'
+                                    + '<td style="text-align: left;">Дата заезда:' + '<input type="text" class="datepicker2" name="countDate1" id="countDate1" />'
+                                    + '</td>'
+                                    + '<td style="text-align: left;">Дата выезда:' + '<input type="text" class="datepicker2" name="countDate2" id="countDate2" />'
+                                    + '</td>'
+                                    + '</tr>'
+                                    + '<tr>'
+                                    + '<td>Стоимость апартамента:' + '</td>'
+                                    + '<td>' + '<span class="">' + rooms[i].room.level + '</span>' + ' руб.' + '</td>'
+                                    + '</tr>'
+                                    + '</table>'
+                            );
+                        $buttonDivRight.append($bookCount).append($ukModal).append($ukModalDialog).append($ukModalHeader);
+
+                        $('.datepicker2').datepicker({
+                            minDate: new Date(),
+                            dateFormat: 'dd.mm.yy'
+                        });
 
                         var
                             $img = $('<img/>', { src: images.image_intro, 'class' : 'room-image' }),
@@ -471,6 +492,10 @@ $minEndMax = json_encode($prices);
 
                         // buttons
                         $buttonDiv.appendTo($mainDiv);
+
+                        $ukModalHeader.appendTo($ukModalDialog);
+                        $ukModalDialog.appendTo($ukModal);
+                        $ukModal.appendTo($buttonDivRight);
                         $buttonDivRight.appendTo($mainDiv);
 
                         // вставляем в главный див
@@ -549,4 +574,3 @@ $minEndMax = json_encode($prices);
         });
     })(jQuery);
 </script>
-
